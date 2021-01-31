@@ -1,0 +1,19 @@
+<script>
+        var map;
+        function init_map() {
+            var opts = { 'center': new google.maps.LatLng(35.567980458012094,51.4599609375), 'zoom': 5, 'mapTypeId': google.maps.MapTypeId.ROADMAP }
+                map = new google.maps.Map(document.getElementById('mapdiv'), opts);
+
+             google.maps.event.addListener(map,'click',function(event) {
+                 document.getElementById('latlongclicked').value = event.latLng.lat()
+                 document.getElementById('lotlongclicked').value =  event.latLng.lng()
+             });
+
+             google.maps.event.addListener(map,'mousemove',function(event) {
+                 document.getElementById('latspan').innerHTML = event.latLng.lat()
+                 document.getElementById('lngspan').innerHTML = event.latLng.lng()
+             });
+
+        } 
+        google.maps.event.addDomListener(window, 'load', init_map);
+    </script>
